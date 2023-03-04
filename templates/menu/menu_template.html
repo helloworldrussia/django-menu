@@ -1,0 +1,16 @@
+<ul>
+ {% for item in items %}
+        <li>
+            {% if item.id == current_item.pk %}
+            <a href="{{ item.href }}" style="color: red;">
+            {% else %}
+            <a href="{{ item.href }}">
+            {% endif %}
+                {{ item.title }}
+            </a>
+        </li>
+        {% if item.children %}
+            {% include 'menu/menu_template.html' with items=item.children %}
+        {% endif %}
+ {% endfor %}
+</ul>
